@@ -1,8 +1,5 @@
 #include "player.h"
 
-QString name;
-QString level;
-int score;
 
 Player::Player(QString name)
 {
@@ -21,7 +18,7 @@ QString Player::getLevel()
     return level;
 }
 
-QString Player::getScore()
+int Player::getScore()
 {
     return score;
 }

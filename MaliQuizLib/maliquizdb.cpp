@@ -6,29 +6,55 @@ MaliquizDB::MaliquizDB()
 
 }
 
-FileDownloader MaliquizDB::synchronize(QString url)
+void MaliquizDB::synchronize(QString url)
 {
-    QUrl dbUrl(url);
-    FileDownloader file = new FileDownloader(dbUrl, this);
-    return file;
+     new FileDownloader(QUrl(url));
 }
 
-MaliquizDB::add()
+QJsonArray MaliquizDB::add(QJsonObject dataObject, QString rootName, QString key, QString value)
 {
-
+    QJsonValue dbMap = dataObject.value(rootName);
+    QJsonArray dbMapArray = dbMap.toArray();
+    // Add object
+    QJsonObject currentValue;
+    currentValue[key] = value;
+    // Insertion
+    dbMapArray.push_back(currentValue);
 }
 
-MaliquizDB::update()
+QJsonArray MaliquizDB::update(QJsonObject dataObject, QString rootName, QString key, QString value)
 {
+    // Search object
+    QJsonValue dbMap = dataObject.find(rootName).value();
+    QJsonArray dbMapArray = dbMap.toArray();
+    QJsonArray::iterator ArrayIterator;
+    QJsonObject currentObj;
 
+    for (ArrayIterator = dbMapArray.begin(); ArrayIterator != dbMapArray.end(); ArrayIterator++) {
+        QString keydb = ArrayIterator.a->first().toString();
+        //QString value = ArrayIterator->second;
+        if(keydb == key){
+            dbMapArray.erase(ArrayIterator);
+            currentObj[key] = value;
+            dbMapArray.push_back(currentObj);
+        }
+     }
+    return dbMapArray;
 }
 
-MaliquizDB::get()
+void MaliquizDB::remove(QJsonObject dataObject, QString rootName, QString key)
 {
+    // Search object
+    QJsonValue dbMap = dataObject.find(rootName).value();
+    QJsonArray dbMapArray = dbMap.toArray();
+    QJsonArray::iterator ArrayIterator;
 
+
+    for (ArrayIterator = dbMapArray.begin(); ArrayIterator != dbMapArray.end(); ArrayIterator++) {
+       QString keydb = ArrayIterator.a->first().toString();
+        if(keydb == key){
+            dbMapArray.erase(ArrayIterator);
+        }
+    }
 }
 
-MaliquizDB::remove()
-{
-
-}

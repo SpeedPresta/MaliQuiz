@@ -2,6 +2,9 @@
 #define MALIQUIZLIB_H
 
 #include "maliquizlib_global.h"
+#include "maliquizdb.h"
+#include "player.h"
+#include "scores.h"
 #include <QFile>
 #include <QJsonValue>
 #include <QJsonArray>
@@ -9,6 +12,7 @@
 #include <QTextStream>
 #include <QStringList>
 #include <QJsonDocument>
+
 
 
 

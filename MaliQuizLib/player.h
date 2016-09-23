@@ -6,11 +6,15 @@
 class Player
 {
 public:
-    Player();
+    Player(QString name);
     QString getName();
     int getScore();
     QString getLevel();
     void storeScore(int score);
+private:
+    QString name;
+    QString level;
+    int score;
 };
 
 #endif // PLAYER_H

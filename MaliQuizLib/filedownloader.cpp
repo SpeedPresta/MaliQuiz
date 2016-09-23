@@ -25,3 +25,6 @@ QByteArray FileDownloader::downloadedData() const {
  return m_DownloadedData;
 }
 
+void FileDownloader::download(QUrl url) {
+    FileDownloader(url, this);
+}
