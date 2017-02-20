@@ -1,0 +1,5 @@
+let A = 13 * Int A = 13 * int A = 13 * var A = 13 #4
+let A? * var A: Int? * let X! * var Z? : char #2
+A + B * A add B * A += B * A.add(B) #1
+fonct A * funct A * func A * fonc A #3
+Int A() * func A():Int * func A -> Int * func A() -> Int #4
