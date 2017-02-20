@@ -1,2 +1,2 @@
 # MaliQuiz
-Maliquiz is a serious games plateform based on quiz system, developped by SpeedPresta for making of the first video game of Mali.
+Maliquiz is a serious games plateform based on quiz system, it implements a smart learning system that takes into account user preferences and progression.
